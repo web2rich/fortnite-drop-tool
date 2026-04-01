@@ -3,25 +3,56 @@
 <head>
   <meta charset="UTF-8" />
   <title>Drop Tool</title>
+
   <style>
     body {
       margin: 0;
-      background: #0d0d0d;
-      color: white;
+      background: #0b0b0b;
+      overflow: hidden;
       font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
     }
 
-    h1 {
-      font-size: 2rem;
-      opacity: 0.8;
+    #map {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      cursor: crosshair;
+    }
+
+    #title {
+      position: absolute;
+      top: 15px;
+      left: 20px;
+      color: white;
+      font-size: 18px;
+      opacity: 0.7;
     }
   </style>
 </head>
 <body>
-  <h1>Fortnite Drop Tool (WIP)</h1>
+
+<div id="title">Drop Tool (click anywhere)</div>
+
+<img id="map" src="https://i.imgur.com/5KXW1bP.jpg" />
+
+<script>
+  const map = document.getElementById("map");
+
+  map.addEventListener("click", (e) => {
+    const dot = document.createElement("div");
+
+    dot.style.position = "absolute";
+    dot.style.width = "10px";
+    dot.style.height = "10px";
+    dot.style.background = "red";
+    dot.style.borderRadius = "50%";
+
+    dot.style.left = e.clientX + "px";
+    dot.style.top = e.clientY + "px";
+
+    document.body.appendChild(dot);
+  });
+</script>
+
 </body>
 </html>
